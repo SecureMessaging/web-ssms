@@ -2,13 +2,8 @@
 
 package_name="web-ssms-$BUILD_TARGET"
 latest_version=`npm show $package_name version`
-size=${#latest_version}
 
-if [ "$size" -gt "8" ]; then
-    latest_version="0.0.0"
-fi 
-
-version=`node -e "var v = '$latest_version'.split('.'); console.log(v[0] + '.' + v[1] + '.' + parseInt(v[2]) + 1)"`
+version=`node -e "var v = '$latest_version'.split('.'); console.log((parseInt(v[0]) || 0) + '.' + (parseInt(v[1]) || 0) + '.' + (parseInt(v[2]) || 0) + 1)"`
 tar_file="$package_name.$version.tar"
 
 npm install
