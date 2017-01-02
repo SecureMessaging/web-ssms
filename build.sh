@@ -1,9 +1,9 @@
 #! /bin/bash
 
-package_name = "web_ssms"
-package_version = "0.0.1"
-target = "test"
-tar_file = $package_name + "." + $package_version + "-" + $target + ".tar"
+package_name="web_ssms"
+package_version="0.0.1"
+target="test"
+tar_file=$package_name + "." + $package_version + "-" + $target + ".tar"
 
 npm install
 ng build
