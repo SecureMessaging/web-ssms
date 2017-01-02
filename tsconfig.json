@@ -15,10 +15,7 @@
     "declaration": true,
     //"outFile": "./dist/index.js",
     "outDir": "./dist",
-    "types": [
-      "node",
-      "webpack"
-    ]
+    "types": ["node"]
   },
   "include": [
     "src/**/*"
