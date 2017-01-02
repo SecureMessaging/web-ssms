@@ -1,15 +1,14 @@
 #! /bin/bash
 
-package_name="web-ssms-$target"
-package_version="0.0.1"
-tar_file="$package_name.$package_version.$target.tar"
+package_name="web-ssms-$BUILD_TARGET"
 latest_version=`npm show $package_name version`
 
 if [ "$latest_version" == 'undefined' ]; then
     latest_version="0.0.0"
 fi 
 
-version="$latest_version"
+version=`node -e "console.log(parseInt('$latest_version'.split('.').pop()) + 1)"`
+tar_file="$package_name.$version.tar"
 
 npm install
 tsc
