@@ -7,14 +7,14 @@ const events = {
     connection : 'connection',
     message : 'message',
     join : 'join',
-    joined: 'joined'
+    joined: 'joined',
+    whatsMyIp: 'whats-my-ip'
 };
 const io: SocketIO.Server = SocketIO({ origins: '*:*'});
 io.listen(port);
 console.log("Listening on port", port);
 
 io.on(events.connection, (socket: SocketIO.Socket)  => acceptConnection(socket));
-
 
 function acceptConnection(socket: SocketIO.Socket){
     console.log('Client Connected', socket.id);
@@ -28,5 +28,10 @@ function acceptConnection(socket: SocketIO.Socket){
     socket.on(events.message, (room: string, message:any) => {
         io.in(room).emit(events.message, room, message, socket.id);
         console.log('Message', "Room:"+ room, message, socket.id);
+    });
+
+    // Return client's ip address
+    socket.on(events.whatsMyIp, function () {
+        socket.emit(events.whatsMyIp, socket.handshake.address);
     });
 }
