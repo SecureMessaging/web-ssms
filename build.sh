@@ -2,8 +2,9 @@
 
 package_name="web-ssms-$BUILD_TARGET"
 latest_version=`npm show $package_name version`
+size=${#latest_version}
 
-if [ "$latest_version" == 'undefined' ]; then
+if [ "$latest_version" == 'undefined' && $size gt 8 ]; then
     latest_version="0.0.0"
 fi 
 
