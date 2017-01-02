@@ -6,7 +6,7 @@ latest_version=`npm show $package_name version`
 version=`node -e "var v = '$latest_version'.split('.'); console.log((parseInt(v[0]) || 0) + '.' + (parseInt(v[1]) || 0) + '.' + ((parseInt(v[2]) || 0) + 1))"`
 tar_file="$package_name.$version.tar"
 
-wcho "Bulding $package_name@$version"
+echo "Bulding $package_name@$version"
 
 npm install
 tsc
