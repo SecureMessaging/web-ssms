@@ -2,12 +2,13 @@
 - hosts: webservers
   remote_user: root
   tasks:
-  
+
     - name: Install web-ssms
       npm:
         name: web-ssms
         global: no
         path: /opt/web-ssms
+        version: latest
 
     - name: "setup index.js file"
       command: "echo require\\(\\'web-ssms\\'\\) >> /opt/web-ssms/index.js"
