@@ -6,6 +6,8 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "tsc server.ts",
+    "release": "http://54.204.236.95:3000/build/?project=web-ssms",
+    "deploy": "ansible-playbook ./scripts/deploy.yml",
     "start": "node server.js"
   },
   "author": "",

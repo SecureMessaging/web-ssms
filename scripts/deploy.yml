@@ -2,9 +2,7 @@
 - hosts: webservers
   remote_user: root
   tasks:
-    - name: Build
-      command: 'wget 127.0.0.1:3000/build?project=web-ssms'
-
+  
     - name: Install web-ssms
       npm:
         name: web-ssms
