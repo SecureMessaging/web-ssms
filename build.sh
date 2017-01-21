@@ -8,7 +8,7 @@ tar_file="$package_name.$version.tar"
 
 echo "Bulding $package_name@$version"
 
-npm install
+npm-cache install
 tsc
 sed "3s/.*/  \"version\": \"$version\",/" $BUILD_DIR/package.json > $BUILD_DIR/dist/package.json
 sed -i "2s/.*/  \"name\": \"$package_name\",/" $BUILD_DIR/dist/package.json

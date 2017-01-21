@@ -1,0 +1,24 @@
+---
+- hosts: webservers
+  remote_user: root
+  tasks:
+    - name: Build
+      command: 'wget 127.0.0.1:3000/build?project=web-ssms'
+
+    - name: Install web-ssms
+      npm:
+        name: web-ssms
+        global: no
+        path: /opt/web-ssms
+
+    - name: "setup index.js file"
+      command: "echo require\\(\\'web-ssms\\'\\) >> /opt/web-ssms/index.js"
+
+    - name: stop web-ssms
+      command: "pm2 stop web-ssms"
+      ignore_errors: yes
+
+    - name: restart web-ssms
+      command: "pm2 start /opt/web-ssms/index.js -n web-ssms"
+      ignore_errors: no
+...
